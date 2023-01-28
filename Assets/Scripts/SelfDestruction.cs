@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class SelfDestruction : MonoBehaviour
@@ -7,13 +6,6 @@ public class SelfDestruction : MonoBehaviour
 
 	private void Start()
 	{
-		StartCoroutine(LifeTime());
-	}
-
-	private IEnumerator LifeTime()
-	{
-		yield return new WaitForSeconds(_time);
-
-		Destroy(gameObject);
+		Destroy(gameObject, _time);
 	}
 }

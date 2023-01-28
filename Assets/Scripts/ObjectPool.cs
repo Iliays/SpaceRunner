@@ -7,7 +7,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private GameObject _container;
     [SerializeField] private int _capacity;
 
-    private List<GameObject> _pool = new List<GameObject>();
+	private Queue<GameObject> _pool = new Queue<GameObject>();
 
 	protected void Initialize(GameObject prefab)
 	{
@@ -16,7 +16,7 @@ public class ObjectPool : MonoBehaviour
 			GameObject spawner = Instantiate(prefab, _container.transform);
 			spawner.SetActive(false);
 
-			_pool.Add(spawner);
+			_pool.Enqueue(spawner);
 		}
 	}
 
@@ -28,7 +28,7 @@ public class ObjectPool : MonoBehaviour
 			GameObject spawned = Instantiate(prefabs[randomIndex], _container.transform);
 			spawned.SetActive(false);
 
-			_pool.Add(spawned);
+			_pool.Enqueue(spawned);
 		}
 	}
 
